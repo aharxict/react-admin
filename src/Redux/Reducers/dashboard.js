@@ -3,13 +3,24 @@ import { updateObject } from '../../Utils/updateObject'
 
 export const initialState = {
   isLoading: true,
+  data: [{
+    userId: null,
+    id: null,
+    title: null,
+    body: null,
+  }],
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case actionTypes.DASHBOARD_LOAD_REQUEST:
-    case actionTypes.DASHBOARD_LOAD_SUCCESS:
-    case actionTypes.DASHBOARD_LOAD_FAILURE:
+    case actionTypes.DASHBOARD_POSTS_LOAD_REQUEST:
+      return updateObject(state, { isLoading: true });
+    case actionTypes.DASHBOARD_POSTS_LOAD_SUCCESS:
+      return updateObject(state, {
+        data: action.response,
+        isLoading: false
+      });
+    case actionTypes.DASHBOARD_POSTS_LOAD_FAILURE:
       return updateObject(state, { isLoading: false });
     default:
       return state;

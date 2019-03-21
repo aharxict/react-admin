@@ -1,13 +1,13 @@
 import React, { PureComponent } from 'react';
-import Nav from '../Components/Nav'
+import Navigation from '../Components/Navigation'
 
 class Header extends PureComponent {
   render () {
     return (
-      <div>
-      <div>Header</div>
-      <Nav />
-      </div>
+      <header className="header">
+      <Navigation />
+      <h3 className="text-center py-2">Admin area</h3>
+      </header>
     );
   }
 }

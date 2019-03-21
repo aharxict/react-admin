@@ -24,7 +24,7 @@ class Dashboard extends PureComponent {
       <div>
         <div>Dashboard</div>
         <div>{this.props.isLoading ? 'Loading' : 'Loaded'}</div>
-        <Table striped hover>
+        <Table striped bordered hover>
           <thead>
           <tr>
             <th className="col-xs-3">User ID</th>

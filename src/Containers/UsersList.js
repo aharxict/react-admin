@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-class Users extends PureComponent {
+class UsersList extends PureComponent {
   render () {
     return (
       <div>Users</div>
@@ -8,4 +8,4 @@ class Users extends PureComponent {
   }
 }
 
-export default Users;
+export default UsersList;

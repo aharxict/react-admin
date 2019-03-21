@@ -11,7 +11,7 @@ class Navigation extends PureComponent {
             <NavLink className="nav-link" exact activeClassName="active" to="/">Dashboard</NavLink>
           </Nav.Item>
           <Nav.Item as="li">
-            <NavLink className="nav-link" exact activeClassName="active" to="/users">Users</NavLink>
+            <NavLink className="nav-link" exact activeClassName="active" to="/users-list">Users list</NavLink>
           </Nav.Item>
           <Nav.Item as="li">
             <NavLink className="nav-link" exact activeClassName="active" to="/stories">Stories</NavLink>

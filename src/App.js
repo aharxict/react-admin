@@ -5,6 +5,7 @@ import Footer from './Containers/Footer'
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import mainStore from './Redux/Store/mainStore'
+import './sccs/style.scss';
 
 class App extends Component {
   render() {

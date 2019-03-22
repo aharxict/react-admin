@@ -8,7 +8,7 @@ import {
 
 export function loadUsersList(params = {}) {
   const config = {
-    url: baseApiUrl + '/users',
+    url: `${baseApiUrl}/users`,
     method: 'get',
     params,
   };

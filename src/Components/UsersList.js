@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { loadUsersList } from '../Redux/Actions/usersList'
 import { Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class UsersList extends PureComponent {
   componentWillMount() {
@@ -13,7 +14,11 @@ class UsersList extends PureComponent {
     return (
       <tr key={post.id}>
         <td>{post.id}</td>
-        <td>{post.username}</td>
+        <td>
+          <Link to={`/users-list/${post.id}`}>
+            {post.username}
+          </Link>
+        </td>
         <td>{post.email}</td>
         <td>{post.website}</td>
       </tr>

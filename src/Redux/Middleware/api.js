@@ -18,6 +18,11 @@ export default store => {
     return action => {
       const callAPI = action[CALL_API];
 
+      //check if need to do API call
+      if (typeof callAPI === 'undefined') {
+        return next(action);
+      }
+
       const { types } = callAPI;
       const { params } = callAPI;
       let { config } = callAPI;

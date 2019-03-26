@@ -1,14 +1,14 @@
 import { CALL_API } from '../Middleware/api';
 import { baseApiUrl } from '../../Utils/urls';
 import {
-  DASHBOARD_POSTS_LOAD_REQUEST,
-  DASHBOARD_POSTS_LOAD_SUCCESS,
-  DASHBOARD_POSTS_LOAD_FAILURE
+  USER_DETAILS_LOAD_REQUEST,
+  USER_DETAILS_LOAD_SUCCESS,
+  USER_DETAILS_LOAD_FAILURE
 } from './actionTypes';
 
-export function loadDashboardPosts(params = {}) {
+export function loadUserDetails(userId = {}, params = {}) {
   const config = {
-    url: `${baseApiUrl}/posts`,
+    url: `${baseApiUrl}/users/${userId}`,
     method: 'get',
     params,
   };
@@ -17,9 +17,9 @@ export function loadDashboardPosts(params = {}) {
     return dispatch({
       [CALL_API]: {
         types: [
-          DASHBOARD_POSTS_LOAD_REQUEST,
-          DASHBOARD_POSTS_LOAD_SUCCESS,
-          DASHBOARD_POSTS_LOAD_FAILURE
+          USER_DETAILS_LOAD_REQUEST,
+          USER_DETAILS_LOAD_SUCCESS,
+          USER_DETAILS_LOAD_FAILURE
         ],
         config,
         params,

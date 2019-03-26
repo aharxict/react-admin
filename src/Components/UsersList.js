@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { loadUsersList } from '../Redux/Actions/usersList'
-import { Table } from 'react-bootstrap';
+import { Table, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class UsersList extends PureComponent {
   componentWillMount() {
@@ -13,7 +14,11 @@ class UsersList extends PureComponent {
     return (
       <tr key={post.id}>
         <td>{post.id}</td>
-        <td>{post.username}</td>
+        <td>
+          <Link to={`/users-list/${post.id}`}>
+            {post.username}
+          </Link>
+        </td>
         <td>{post.email}</td>
         <td>{post.website}</td>
       </tr>
@@ -25,22 +30,25 @@ class UsersList extends PureComponent {
       <div>
         <div>Users list</div>
         <div>{this.props.isLoading ? 'Loading' : 'Loaded'}</div>
-        <Table striped bordered hover>
-          <thead>
-          <tr>
-            <th className="col-xs-3">User ID</th>
-            <th>User name</th>
-            <th>Email</th>
-            <th>Website</th>
-          </tr>
-          </thead>
-          <tbody>
-          {this.props.data.map(item => {
-            return this.row(item);
-          })}
-          </tbody>
-        </Table>
-      </div>    );
+        <Container>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th className="col-xs-3">User ID</th>
+                <th>User name</th>
+                <th>Email</th>
+                <th>Website</th>
+              </tr>
+            </thead>
+            <tbody>
+            {this.props.data.map(item => {
+              return this.row(item);
+            })}
+            </tbody>
+          </Table>
+        </Container>
+      </div>
+    );
   }
 }
 

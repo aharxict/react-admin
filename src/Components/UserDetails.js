@@ -2,10 +2,10 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { loadUserDetails } from '../Redux/Actions/userDetails'
-import { Badge, Breadcrumb } from 'react-bootstrap';
+import { Badge, Breadcrumb, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { reduxForm, Field } from 'redux-form';
 import UserForm from './Form/UserForm'
+import LoadSpinner from './LoadSpinner';
 
 class UserDetails extends PureComponent {
   componentWillMount() {
@@ -33,31 +33,20 @@ class UserDetails extends PureComponent {
     );
   };
 
-  handleSubmit = values => {
-    console.log(values);
-  };
-
   render () {
+
+    if (this.props.isLoading) {
+      return <LoadSpinner />;
+    }
+
     return (
       <div>
         {this.breadcrumbs()}
-        <div>{this.props.isLoading ? 'Loading' : 'Loaded'}</div>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label htmlFor="firstName">First Name</label>
-            <Field name="firstName" component="input" type="text" />
-          </div>
-          <div>
-            <label htmlFor="lastName">Last Name</label>
-            <Field name="lastName" component="input" type="text" />
-          </div>
-          <div>
-            <label htmlFor="email">Email</label>
-            <Field name="email" component="input" type="email" />
-          </div>
-          <button type="submit">Submit</button>
-        </form>
-        <UserForm />
+        <Container>
+          <hr />
+          <UserForm />
+          <hr />
+        </Container>
       </div>
     );
   }
@@ -86,8 +75,4 @@ export default connect(
   {
     loadUserDetails,
   }
-)(
-  reduxForm({
-    formReducer: 'userForm',
-  })(UserDetails)
-);
+)(UserDetails);

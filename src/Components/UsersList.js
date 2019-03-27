@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { loadUsersList } from '../Redux/Actions/usersList'
 import { Table, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Breadcrumbs from './Breadcrumbs';
+import LoadSpinner from './LoadSpinner';
 
 class UsersList extends PureComponent {
   componentWillMount() {
@@ -25,11 +27,35 @@ class UsersList extends PureComponent {
     );
   };
 
+  mapping = () =>{
+    return [
+      {
+        name: 'Home',
+        href: '/',
+        attach: null,
+      },
+      {
+        name: 'Users list',
+        href: null,
+        attach: null,
+      },
+    ];
+  };
+
   render () {
+
+    if (this.props.isLoading) {
+      return (
+        <div>
+          <Breadcrumbs mapping={this.mapping()} />
+          <LoadSpinner />
+        </div>
+      );
+    }
+
     return (
       <div>
-        <div>Users list</div>
-        <div>{this.props.isLoading ? 'Loading' : 'Loaded'}</div>
+        <Breadcrumbs mapping={this.mapping()} />
         <Container>
           <Table striped bordered hover>
             <thead>

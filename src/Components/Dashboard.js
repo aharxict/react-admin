@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { loadDashboardPosts } from '../Redux/Actions/dashboard'
 import { Table } from 'react-bootstrap';
+import Breadcrumbs from './Breadcrumbs';
+import LoadSpinner from './LoadSpinner';
 
 class Dashboard extends PureComponent {
   componentWillMount() {
@@ -19,9 +21,30 @@ class Dashboard extends PureComponent {
     );
   };
 
+  mapping = () =>{
+    return [
+      {
+        name: 'Home',
+        href: '/',
+        attach: null,
+      },
+    ];
+  };
+
   render () {
+
+    if (this.props.isLoading) {
+      return (
+        <div>
+          <Breadcrumbs mapping={this.mapping()} />
+          <LoadSpinner />
+        </div>
+      );
+    }
+
     return (
       <div>
+        <Breadcrumbs mapping={this.mapping()} />
         <div>Dashboard</div>
         <div>{this.props.isLoading ? 'Loading' : 'Loaded'}</div>
         <Table striped bordered hover>

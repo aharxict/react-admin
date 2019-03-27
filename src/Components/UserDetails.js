@@ -1,11 +1,15 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { loadUserDetails } from '../Redux/Actions/userDetails'
-import { Badge, Breadcrumb, Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import {
+  loadUserDetails,
+  updateUserDetails
+} from '../Redux/Actions/userDetails';
+import { Form } from 'react-bootstrap';
 import UserForm from './Form/UserForm'
 import LoadSpinner from './LoadSpinner';
+import Breadcrumbs from './Breadcrumbs';
+import { reduxForm } from "redux-form";
 
 class UserDetails extends PureComponent {
   componentWillMount() {
@@ -13,40 +17,54 @@ class UserDetails extends PureComponent {
     if (id) {
       this.props.loadUserDetails(id);
     }
-    console.log(this.props);
   }
 
-  breadcrumbs = () => {
-    return (
-      <Breadcrumb>
-        <Link to="/" className="breadcrumb-item">
-          Home
-        </Link>
-        <Link to="/users-list" className="breadcrumb-item">
-          Users list
-        </Link>
-        <Breadcrumb.Item active>User Details - {' '}
-          <Badge variant="secondary">{this.props.data.username}
-          </Badge>
-        </Breadcrumb.Item>
-      </Breadcrumb>
-    );
+  submit = values => {
+    this.props.updateUserDetails(this.props.data.id, values);
+  };
+
+  mapping = () =>{
+    return [
+      {
+        name: 'Home',
+        href: '/',
+        attach: null,
+      },
+      {
+        name: 'Users list',
+        href: '/users-list',
+        attach: null,
+      },
+      {
+        name: 'User Details',
+        href: null,
+        attach: this.props.data.username,
+      },
+    ];
   };
 
   render () {
 
     if (this.props.isLoading) {
-      return <LoadSpinner />;
+      return (
+        <div>
+          <Breadcrumbs mapping={this.mapping()} />
+          <LoadSpinner />
+        </div>
+      );
     }
 
     return (
       <div>
-        {this.breadcrumbs()}
-        <Container>
+        <Breadcrumbs mapping={this.mapping()} />
+        <Form
+          className="user-edit-form"
+          onSubmit={this.props.handleSubmit(this.submit)}
+        >
           <hr />
           <UserForm />
           <hr />
-        </Container>
+        </Form>
       </div>
     );
   }
@@ -55,7 +73,9 @@ class UserDetails extends PureComponent {
 UserDetails.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   loadUserDetails: PropTypes.func.isRequired,
+  updateUserDetails: PropTypes.func.isRequired,
   data: PropTypes.object,
+  handleSubmit: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -74,5 +94,10 @@ export default connect(
   mapStateToProps,
   {
     loadUserDetails,
+    updateUserDetails,
   }
-)(UserDetails);
+)(
+  reduxForm({
+    form: 'userForm',
+  })(UserDetails)
+);

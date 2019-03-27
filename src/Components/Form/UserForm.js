@@ -1,14 +1,10 @@
 import React, { PureComponent } from 'react';
 import { Field, reduxForm, FormSection } from 'redux-form';
-import { Form, Row, Col, Button, Alert } from 'react-bootstrap';
+import { Container, Row, Col, Button, Alert, Form} from 'react-bootstrap';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class UserForm extends PureComponent {
-  submit = values => {
-    // print the form values to the console
-    console.log('submit', values);
-  };
 
   simpleRow = (key) => {
     return (
@@ -48,7 +44,7 @@ class UserForm extends PureComponent {
         {
           Object.keys(data).map(key => {
 
-            if (typeof data[key] === "object") {
+            if (data[key] instanceof Object) {
               return this.nestedRow(key, data[key]);
             }
             return this.simpleRow(key);
@@ -61,26 +57,22 @@ class UserForm extends PureComponent {
   render() {
 
     return (
-        <Form
-          className="user-edit-form"
-          onSubmit={this.props.handleSubmit(this.submit)}
-        >
-          {this.simpleRow('name')}
-          {this.simpleRow('username')}
-          {this.simpleRow('email')}
-          {this.nestedRow('address', this.props.initialValues.address)}
-          {this.simpleRow('phone')}
-          {this.simpleRow('website')}
-          {this.nestedRow('company', this.props.initialValues.company)}
-          <Button variant="primary" type="submit">Submit</Button>
-        </Form>
+      <Container>
+        {this.simpleRow('name')}
+        {this.simpleRow('username')}
+        {this.simpleRow('email')}
+        {this.nestedRow('address', this.props.initialValues.address)}
+        {this.simpleRow('phone')}
+        {this.simpleRow('website')}
+        {this.nestedRow('company', this.props.initialValues.company)}
+        <Button variant="primary" type="submit">Submit</Button>
+      </Container>
     );
   }
 }
 
 UserForm.propTypes = {
   initialValues: PropTypes.object,
-  handleSubmit: PropTypes.func,
 };
 
 function mapStateToProps(state) {

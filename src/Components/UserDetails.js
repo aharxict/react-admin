@@ -1,11 +1,15 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { loadUserDetails } from '../Redux/Actions/userDetails'
-import { Badge, Breadcrumb, Container } from 'react-bootstrap';
+import {
+  loadUserDetails,
+  updateUserDetails
+} from '../Redux/Actions/userDetails';
+import {Badge, Breadcrumb, Form} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import UserForm from './Form/UserForm'
 import LoadSpinner from './LoadSpinner';
+import { reduxForm } from "redux-form";
 
 class UserDetails extends PureComponent {
   componentWillMount() {
@@ -13,8 +17,11 @@ class UserDetails extends PureComponent {
     if (id) {
       this.props.loadUserDetails(id);
     }
-    console.log(this.props);
   }
+
+  submit = values => {
+    this.props.updateUserDetails(this.props.data.id, values);
+  };
 
   breadcrumbs = () => {
     return (
@@ -42,11 +49,14 @@ class UserDetails extends PureComponent {
     return (
       <div>
         {this.breadcrumbs()}
-        <Container>
+        <Form
+          className="user-edit-form"
+          onSubmit={this.props.handleSubmit(this.submit)}
+        >
           <hr />
           <UserForm />
           <hr />
-        </Container>
+        </Form>
       </div>
     );
   }
@@ -55,7 +65,9 @@ class UserDetails extends PureComponent {
 UserDetails.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   loadUserDetails: PropTypes.func.isRequired,
+  updateUserDetails: PropTypes.func.isRequired,
   data: PropTypes.object,
+  handleSubmit: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -74,5 +86,10 @@ export default connect(
   mapStateToProps,
   {
     loadUserDetails,
+    updateUserDetails,
   }
-)(UserDetails);
+)(
+  reduxForm({
+    form: 'userForm',
+  })(UserDetails)
+);

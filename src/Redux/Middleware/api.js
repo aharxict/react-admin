@@ -40,6 +40,7 @@ export default store => {
       // Axios does not add automatically header X-Requested-With
       config['headers'] = config['headers'] || {};
       config['headers']['X-Requested-With'] = 'XMLHttpRequest';
+      config['headers']['Content-type'] = 'application/json';
 
       return callApi(config)
         .then(response => {

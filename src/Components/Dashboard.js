@@ -45,8 +45,6 @@ class Dashboard extends PureComponent {
     return (
       <div>
         <Breadcrumbs mapping={this.mapping()} />
-        <div>Dashboard</div>
-        <div>{this.props.isLoading ? 'Loading' : 'Loaded'}</div>
         <Table striped bordered hover>
           <thead>
           <tr>

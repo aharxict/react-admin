@@ -1,0 +1,12 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.border-box {
+  padding: 25px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #eee;
+  margin: 25px 0;
+}

@@ -37,7 +37,7 @@ export function updateUserDetails(userId = {}, data = {}) {
     method: 'put',
     data: data,
   };
-console.log('params', data);
+
   return dispatch => {
     return dispatch({
       [CALL_API]: {

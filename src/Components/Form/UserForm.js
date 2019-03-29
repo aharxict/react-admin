@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Field, reduxForm, FormSection } from 'redux-form';
-import { Container, Row, Col, Button, Alert, Form} from 'react-bootstrap';
+import { Row, Col, Button, Alert, Form} from 'react-bootstrap';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -10,7 +10,7 @@ class UserForm extends PureComponent {
     return (
       <Form.Group key={key} as={Row}>
         <Form.Label column sm={2}>
-          <Alert variant="light">
+          <Alert variant="info">
             {key}
           </Alert>
         </Form.Label>
@@ -57,16 +57,16 @@ class UserForm extends PureComponent {
   render() {
 
     return (
-      <Container>
+      <div>
         {this.simpleRow('name')}
         {this.simpleRow('username')}
         {this.simpleRow('email')}
-        {this.nestedRow('address', this.props.initialValues.address)}
         {this.simpleRow('phone')}
         {this.simpleRow('website')}
+        {this.nestedRow('address', this.props.initialValues.address)}
         {this.nestedRow('company', this.props.initialValues.company)}
         <Button variant="primary" type="submit">Submit</Button>
-      </Container>
+      </div>
     );
   }
 }

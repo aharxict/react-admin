@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { loadDashboardPosts } from '../Redux/Actions/dashboard'
-import { Table } from 'react-bootstrap';
+import { Table, Container } from 'react-bootstrap';
 import Breadcrumbs from './Breadcrumbs';
 import LoadSpinner from './LoadSpinner';
 
@@ -45,22 +45,22 @@ class Dashboard extends PureComponent {
     return (
       <div>
         <Breadcrumbs mapping={this.mapping()} />
-        <div>Dashboard</div>
-        <div>{this.props.isLoading ? 'Loading' : 'Loaded'}</div>
-        <Table striped bordered hover>
-          <thead>
-          <tr>
-            <th className="col-xs-3">User ID</th>
-            <th>Post ID</th>
-            <th>Post title</th>
-          </tr>
-          </thead>
-          <tbody>
-          {this.props.data.map(item => {
-            return this.row(item);
-          })}
-          </tbody>
-        </Table>
+        <Container>
+          <Table striped bordered hover>
+            <thead>
+            <tr>
+              <th>User ID</th>
+              <th>Post ID</th>
+              <th>Post title</th>
+            </tr>
+            </thead>
+            <tbody>
+            {this.props.data.map(item => {
+              return this.row(item);
+            })}
+            </tbody>
+          </Table>
+        </Container>
       </div>
     );
   }

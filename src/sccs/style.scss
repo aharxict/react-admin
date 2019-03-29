@@ -5,7 +5,10 @@
 //$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap/scss/bootstrap';
 
+@import 'base/general';
 @import 'base/header';
 @import 'base/body';
+@import 'base/footer';
 
 @import 'pages/users-list';
+@import 'pages/user-details';

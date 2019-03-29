@@ -5,7 +5,7 @@ import {
   loadUserDetails,
   updateUserDetails
 } from '../Redux/Actions/userDetails';
-import { Form } from 'react-bootstrap';
+import { Form, Container } from 'react-bootstrap';
 import UserForm from './Form/UserForm'
 import LoadSpinner from './LoadSpinner';
 import Breadcrumbs from './Breadcrumbs';
@@ -55,16 +55,18 @@ class UserDetails extends PureComponent {
     }
 
     return (
-      <div>
+      <div className="user-details">
         <Breadcrumbs mapping={this.mapping()} />
-        <Form
-          className="user-edit-form"
-          onSubmit={this.props.handleSubmit(this.submit)}
-        >
-          <hr />
-          <UserForm />
-          <hr />
-        </Form>
+        <Container>
+          <Form
+            className="user-edit-form"
+            onSubmit={this.props.handleSubmit(this.submit)}
+          >
+            <div className="border-box">
+              <UserForm />
+            </div>
+          </Form>
+        </Container>
       </div>
     );
   }

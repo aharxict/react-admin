@@ -22,6 +22,8 @@ export default function (state = initialState, action) {
       });
     case actionTypes.DASHBOARD_POSTS_LOAD_FAILURE:
       return updateObject(state, { isLoading: false });
+    case actionTypes.DASHBOARD_SET_SELECTED_USER:
+      return updateObject(state, { selectedUserId: action.userId });
     default:
       return state;
   }

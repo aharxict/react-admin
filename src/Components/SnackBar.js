@@ -31,7 +31,7 @@ class SnackBar extends PureComponent {
   render () {
     return (
       <div className={this.state.class}>
-        {this.props.description + this.props.userId}
+        {this.props.description}
       </div>
     );
   }

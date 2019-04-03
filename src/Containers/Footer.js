@@ -12,7 +12,6 @@ class Footer extends PureComponent {
   };
 
   renderSnackBars = () => {
-    const description = 'User selected with ID = ';
 
     if (this.state.isShowSnackBar && this.state.snackBars.length > 3) {
       this.setState({
@@ -24,10 +23,12 @@ class Footer extends PureComponent {
 
     if (this.state.isShowSnackBar && this.state.snackBars.length > 0) {
       return this.state.snackBars.map((item, index) => {
+
+        const description = 'User selected with ID = ' + item;
+
         return (
           <SnackBar
             key={'' + item}
-            userId={item}
             description={description}
           />
           );

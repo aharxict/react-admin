@@ -15,16 +15,9 @@
 
   .snack-bar {
 
-    + .snack-bar {
-      &.show {
-        transform: translateY(0px);
-      }
-    }
-
     &.show {
       transform: translateX(0px) translateY(0px);
       &.hide {
-        transform: translateX(0px) translateY(1px);
         opacity: 0;
         height: 0;
         padding: 0 24px;

@@ -1,0 +1,38 @@
+.snack-bar-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: hidden;
+
+  div {
+    transition: 0.5s;
+    transform: translateX(-260px) translateY(0px);
+    opacity: 1;
+    height: 36px;
+  }
+
+  .snack-bar {
+
+    &.show {
+      transform: translateX(0px) translateY(0px);
+      &.hide {
+        opacity: 0;
+        height: 0;
+        padding: 0 24px;
+        margin: 0 25px;
+      }
+    }
+
+    position: relative;
+    background-color: #007bff;
+    padding: 6px 24px;
+    color: #fff;
+    margin: 25px;
+    border-radius: 5px;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,0.2),
+    0px 6px 10px 0px rgba(0,0,0,0.14),
+    0px 1px 18px 0px rgba(0,0,0,0.12);
+  }
+}

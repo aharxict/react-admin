@@ -8,6 +8,7 @@ import {
 import { Table, Container, NavDropdown } from 'react-bootstrap';
 import Breadcrumbs from './Breadcrumbs';
 import LoadSpinner from './LoadSpinner';
+import UserAlbums from '../Components/UserAlbums';
 
 class Dashboard extends PureComponent {
   componentWillMount() {
@@ -104,6 +105,9 @@ class Dashboard extends PureComponent {
             })}
             </tbody>
           </Table>
+        </Container>
+        <Container>
+          <UserAlbums />
         </Container>
       </div>
     );

@@ -23,8 +23,6 @@ export const USER_ALBUMS_LOAD_REQUEST = 'USER_ALBUMS_LOAD_REQUEST';
 export const USER_ALBUMS_LOAD_SUCCESS = 'USER_ALBUMS_LOAD_SUCCESS';
 export const USER_ALBUMS_LOAD_FAILURE = 'USER_ALBUMS_LOAD_FAILURE';
 
-export const USER_SET_SELECTED_ALBUM = 'USER_SET_SELECTED_ALBUM';
-
 // ---------------------------------------------- User gallery ----------------------------------------------//
 export const USER_GALLERY_LOAD_REQUEST = 'USER_GALLERY_LOAD_REQUEST';
 export const USER_GALLERY_LOAD_SUCCESS = 'USER_GALLERY_LOAD_SUCCESS';

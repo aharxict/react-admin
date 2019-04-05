@@ -4,7 +4,6 @@ import {
   USER_ALBUMS_LOAD_REQUEST,
   USER_ALBUMS_LOAD_SUCCESS,
   USER_ALBUMS_LOAD_FAILURE,
-  USER_SET_SELECTED_ALBUM,
 } from './actionTypes';
 
 export function loadUserAlbums(userId = null) {
@@ -30,11 +29,3 @@ export function loadUserAlbums(userId = null) {
   }
 }
 
-export function setSelectedAlbum(albumId) {
-  return dispatch => {
-    return dispatch({
-      type: USER_SET_SELECTED_ALBUM,
-      albumId
-    });
-  }
-}

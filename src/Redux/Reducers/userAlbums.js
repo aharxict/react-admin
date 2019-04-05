@@ -21,8 +21,6 @@ export default function (state = initialState, action) {
       });
     case actionTypes.USER_ALBUMS_LOAD_FAILURE:
       return updateObject(state, { isLoading: false });
-    case actionTypes.USER_SET_SELECTED_ALBUM:
-      return updateObject(state, { selectedAlbumId: action.albumId });
     default:
       return state;
   }

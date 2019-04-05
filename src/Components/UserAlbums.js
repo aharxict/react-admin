@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { CardColumns, Card, Button } from 'react-bootstrap';
-import { loadUserAlbums, setSelectedAlbum } from '../Redux/Actions/userAlbums';
+import { loadUserAlbums } from '../Redux/Actions/userAlbums';
+import { loadUserGallery } from '../Redux/Actions/userGallery';
 import UserGallery from './UserGallery';
 
 class UserAlbums extends PureComponent {
@@ -13,8 +14,8 @@ class UserAlbums extends PureComponent {
     }
   }
 
-  openGallery = (albumId) => {
-    this.props.setSelectedAlbum(albumId);
+  loadGallery = (albumId) => {
+    this.props.loadUserGallery(albumId);
   };
 
   renderCard = (album) => {
@@ -23,7 +24,7 @@ class UserAlbums extends PureComponent {
         <Card.Header>Album - {album.id}</Card.Header>
         <Card.Body className="text-center">
           <Card.Title>{album.title}</Card.Title>
-          <Button variant="primary" onClick={() => this.openGallery(album.id)}>
+          <Button variant="primary" onClick={() => this.loadGallery(album.id)}>
             Open gallery
           </Button>
         </Card.Body>
@@ -53,9 +54,9 @@ class UserAlbums extends PureComponent {
 UserAlbums.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   loadUserAlbums: PropTypes.func.isRequired,
+  loadUserGallery: PropTypes.func.isRequired,
   data: PropTypes.array,
   selectedUserId: PropTypes.number,
-  setSelectedAlbum: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -70,6 +71,6 @@ export default connect(
   mapStateToProps,
   {
     loadUserAlbums,
-    setSelectedAlbum,
+    loadUserGallery,
   }
 )(UserAlbums);

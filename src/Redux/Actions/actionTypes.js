@@ -17,3 +17,17 @@ export const USER_DETAILS_LOAD_FAILURE = 'USER_DETAILS_LOAD_FAILURE';
 export const USER_DETAILS_UPDATE_REQUEST = 'USER_DETAILS_UPDATE_REQUEST';
 export const USER_DETAILS_UPDATE_SUCCESS = 'USER_DETAILS_UPDATE_SUCCESS';
 export const USER_DETAILS_UPDATE_FAILURE = 'USER_DETAILS_UPDATE_FAILURE';
+
+// ---------------------------------------------- User albums ----------------------------------------------//
+export const USER_ALBUMS_LOAD_REQUEST = 'USER_ALBUMS_LOAD_REQUEST';
+export const USER_ALBUMS_LOAD_SUCCESS = 'USER_ALBUMS_LOAD_SUCCESS';
+export const USER_ALBUMS_LOAD_FAILURE = 'USER_ALBUMS_LOAD_FAILURE';
+
+// ---------------------------------------------- User gallery ----------------------------------------------//
+export const USER_GALLERY_LOAD_REQUEST = 'USER_GALLERY_LOAD_REQUEST';
+export const USER_GALLERY_LOAD_SUCCESS = 'USER_GALLERY_LOAD_SUCCESS';
+export const USER_GALLERY_LOAD_FAILURE = 'USER_GALLERY_LOAD_FAILURE';
+
+// ---------------------------------------------- Modal box ----------------------------------------------//
+export const MODAL_BOX_OPEN = 'MODAL_BOX_OPEN';
+export const MODAL_BOX_CLOSE = 'MODAL_BOX_CLOSE';

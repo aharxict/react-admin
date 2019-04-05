@@ -4,6 +4,7 @@
 
 //$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap/scss/bootstrap';
+@import '~react-image-gallery/styles/scss/image-gallery.scss';
 
 @import 'base/general';
 @import 'base/header';
@@ -11,6 +12,7 @@
 @import 'base/footer';
 
 @import "modules/snack-bar";
+@import "modules/modal-box";
 
 @import 'pages/users-list';
 @import 'pages/user-details';

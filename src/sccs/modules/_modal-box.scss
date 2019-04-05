@@ -1,0 +1,33 @@
+.modal-box {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.3);
+
+  .modal-container {
+    position: relative;
+    margin: 10vh auto;
+    height: auto;
+    width: 80vw;
+    max-width: 600px;
+
+    .modal-box_close {
+      position: absolute;
+      z-index: 1;
+      right: 20px;
+      top: 15px;
+      color: #fff;
+      cursor: pointer;
+      filter: drop-shadow(0 1px 1px #1a1a1a);
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    button:focus {
+      outline: none;
+    }
+  }
+}

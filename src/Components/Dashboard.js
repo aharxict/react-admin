@@ -5,10 +5,11 @@ import {
   loadDashboardPosts,
   setSelectedUser
 } from '../Redux/Actions/dashboard'
-import { Table, Container, NavDropdown } from 'react-bootstrap';
+import { Table, Container, NavDropdown, Row, Col } from 'react-bootstrap';
 import Breadcrumbs from './Breadcrumbs';
 import LoadSpinner from './LoadSpinner';
-import UserAlbums from '../Components/UserAlbums';
+import UserAlbums from './UserAlbums';
+import Search from './Search';
 
 class Dashboard extends PureComponent {
   componentWillMount() {
@@ -86,6 +87,13 @@ class Dashboard extends PureComponent {
     return (
       <div>
         <Breadcrumbs mapping={this.mapping()} />
+        <Container>
+          <Row>
+            <Col md={{ span: 6, offset: 3 }}>
+              <Search />
+            </Col>
+          </Row>
+        </Container>
         <Container>
           {this.navDropdown()}
           <Table striped bordered hover>
